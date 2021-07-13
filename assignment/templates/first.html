@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #forcastMap {
+            height: 400px;
+        }
+        body{
+            background-color: darkslategray;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""
+    />
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin="">
+    </script>
+    <title>Forcast Data</title>
+
+    
+</head>
+<body>
+    <h1>Today's forcast data</h1>
+    <h2>{{temp}} F</h2>
+    <div id="forcastMap"></div>
+    <script>
+        // creating a map
+        const mymap = L.map('forcastMap').setView([{{lat}}, {{log}}], 2.5);
+        const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
+        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+
+        // creating a tile layer and adding it to map
+        const tiles = L.tileLayer(tileUrl, {attribution});
+        tiles.addTo(mymap)
+
+        //creating a marker for our location
+        const marker = L.marker([{{lat}}, {{log}}]).addTo(mymap);
+        marker.bindPopup("<b>Temperature is: </b>{{temp}} F").openPopup();
+    </script>
+</body>
+</html>

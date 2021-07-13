@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forcast</title>
+    <style>
+        img {
+            width: 100%;
+            height: 40vh;
+        }
+        body {
+            background-color: darkgray;
+        }      
+        *, html {
+            margin:0;
+            padding:0;  
+        }
+        div {
+            border: 5px solid ivory;
+            border-radius: 6px;
+            margin-top: 20px;
+            padding-left: 40px;
+            font-family: "Lucida Console", "Courier New", monospace;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+        <img src="https://source.unsplash.com/1600x900/?weather" alt="Error Loading Image">
+        <div>
+            <h2>Give us the coordinates and we will <br>share the forcast details</h2>
+            <form action="/forcast/data" method="POST">
+                {% csrf_token %}
+                <label for="id_Latitude">Latitude</label><br>
+                <input type="text" name="Latitude" required id="id_Latitude"><br>
+                <label for="id_Longitude">Longitude</label><br>
+                <input type="text" name="Longitude" required id="id_Longitude"><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+</body>
+</html>
