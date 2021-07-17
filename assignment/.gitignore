@@ -1,4 +1,6 @@
 *.pyc
 db.sqlite3
 .coverage
-../.vscode/
+../.vscode/settings.json
+getWeather/tests/__init__.py
+getWeather/tests/__init__.py
